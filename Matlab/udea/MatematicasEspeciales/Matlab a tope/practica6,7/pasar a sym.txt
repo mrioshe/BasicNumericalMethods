@@ -1,0 +1,33 @@
+
+q =
+
+    '[[-2 2],[ -3 3],[ -5 5]]'
+
+Conversion to cell from double is not possible.
+
+Error in ayudapractica6 (line 6)
+  arr(1,i)=[a(1,i+n) a(1,i+1+n)]
+ 
+>> a(1)
+
+ans =
+
+    -2
+
+>> b=num2str(a(1))
+
+b =
+
+    '-2'
+
+>> c=sym(b)
+ 
+c =
+ 
+-2
+ 
+>> class(c)
+
+ans =
+
+    'sym'

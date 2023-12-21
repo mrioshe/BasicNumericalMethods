@@ -1,0 +1,60 @@
+function practica100
+uicontrol('style','text','position',[20 385 500 40],'string',' Distribución de calor en placa rectangular','fonts',17);
+%uicontrol('style','text','position',[10 360 400 25],'string','Ingrese los intervalos de los tramos :','fonts',15);
+uicontrol('style','text','position',[10 345 350 25],'string','Ingrese la función inicial f(x):','fonts',15);
+uicontrol('style','pushbutton','position',[210 280 140 40],'string','Simular','FontSize',12,'callback',@boton_1);
+%intervalo=uicontrol('style','edit','position',[380 355 150 20],'fonts',12);
+funcione=uicontrol('style','edit','position',[330 345 150 20]);
+% uicontrol('style','text','position',[10 310 400 25],'string','Ingrese la longitud de la barra:','fonts',15);
+% longitud=uicontrol('style','edit','position',[350 310 150 20],'fonts',12);
+% constante=uicontrol('style','edit','position',[310 280 150 20],'fonts',12);
+% uicontrol('style','text','position',[80 280 220 25],'string','Ingrese la constante c:','fonts',15);
+
+
+    function boton_1(atr,tim);
+        
+        x=sym("x");
+        n=sym("n");
+        f= str2sym(get(funcione, 'string'));
+        a=8;
+        b=10;
+        L=0:0.5:b;% es la longitud de la placa
+        A=0:0.5:a;% Es el ancho de la placa
+        D =(2/(a*sinh(n*pi*b/a)))*int(f*sin(n*pi*x/a),x,a,0);
+        for i=1:length(A)
+            for j=1:length(L)
+                puntos(j+(i-1)*length(L),:)=[L(j);A(i)];
+                %         plot(L(j),A(i),'ob')
+                %         pause(0.1)
+                %         hold on
+                %         axis([-0.1 10.1 -0.1 8.1 ])
+            end
+        end
+        for j=1:length(A)-1
+            for i=1:length(L)-1
+                caras(i+(j-1)*(length(L)-1),:)=[i+(j-1)*(length(L))...
+                    i+1+(j-1)*(length(L))...
+                    i+length(L)+1+(j-1)*(length(L))...
+                    i+length(L)+(j-1)*(length(L))];
+            end
+        end
+        calores=0;
+        for m=1:length(A)-1
+            for p=1:length(L)-1
+                c=0;
+                for k=1:10
+                    c=c+eval(subs(D*sinh(n*pi*A(m)/a)*sin(n*pi*L(p)/a),n,k));
+                end
+                calores=[calores c];
+            end
+        end
+        
+        for i=1:length(caras)
+            c_n = abs(calores(i+1))*64/max(calores);
+            subplot('position',[0.05 0.05 0.90 0.50])
+            patch('faces',caras(i,:),'vertices',puntos,...
+                'facecolor',colorin(c_n),'edgecolor',colorin(c_n));
+            % pause(0.2)
+        end
+    end
+end

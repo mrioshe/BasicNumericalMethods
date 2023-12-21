@@ -1,0 +1,43 @@
+if length(solve(str2sym(get(u1,'string')))) == 1 & D==str2sym(get(u1,'string'))
+                    numerador=str2sym(get(u1,'string'));
+                    if (numerador - z)-(denominador - z)== -radio
+                        f2=0;
+                        for i=0:8
+                            f2=f2+(radio/(numerador))^i
+                        end
+                        serie=string(f2);
+                        salida=strcat(serie,' .....')
+                        set(u7,'string',salida)                        
+                    else (numerador - z)-(denominador - z)== radio
+                        f2=0;
+                        for i=0:8
+                            f2=f2+(-radio/(numerador))^i
+                        end
+                        serie=string(f2);
+                        salida=strcat(serie,' .....')
+                        set(u7,'string',salida)       
+                    end
+                    
+                end
+
+
+numerador=str2sym(get(u1,'string'));
+                    if (numerador - z)-(denominador - z)== -radio
+                        f2=0;
+                        for i=0:8
+                            f2=f2+(radio/(numerador))^i
+                        end
+                        serie=string(f2);
+                        salida=strcat(serie,' .....')
+                        set(u7,'string',salida)                        
+                    else (numerador - z)-(denominador - z)== radio
+                        f2=0;
+                        for i=0:8
+                            f2=f2+(-radio/(numerador))^i
+                        end
+                        serie=string(f2);
+                        salida=strcat(serie,' .....')
+                        set(u7,'string',salida)       
+                    end
+                    
+                end

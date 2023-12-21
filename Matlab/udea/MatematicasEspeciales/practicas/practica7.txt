@@ -1,0 +1,21 @@
+%hallar el espectro de la función f(t)=t^2,
+%para -1<t<1 de periodo 2
+syms t n
+f=t^2
+T=2;w0=2*pi/T;
+cn=1/T*int(f*exp(-1i*n*w0*t),t,-T/2,T/2);
+for k=1:11;
+  if (k-6)~=0
+  ci(1,k)=abs(eval(subs(cn,n,k-6)));
+   else
+  ci(1,k)=abs(eval(limit(cn,n,0)));
+end
+nw0(1,k)=(k-6)*w0;
+end
+plot(nw0,ci1,'o')
+hold on
+plot(nw0,ci1)
+pm=0
+for c=1:11
+pm=pm+ci1(1,c);
+en

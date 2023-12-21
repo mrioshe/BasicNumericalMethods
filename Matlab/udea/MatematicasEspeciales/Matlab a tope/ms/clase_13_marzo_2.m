@@ -1,0 +1,7 @@
+uicontrol('style','edit','position',[220 240 80 20])
+uicontrol('style','edit','position',[220 221 80 20])
+uicontrol('style','text','position',[310 230 5 20],'string','|','fonts',10)
+uicontrol('style','edit','position',[315 230 50 20])
+uicontrol('style','text','position',[370 230 5 20],'string','|','fonts',10)
+uicontrol('style','text','position',[380 230 10 20],'string','>','fonts',10)
+uicontrol('style','edit','position',[390 230 10 20])

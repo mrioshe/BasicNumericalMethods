@@ -1,0 +1,24 @@
+function color_slider
+t=0:2*pi/4:2*pi;
+x=cos(t+pi/4);
+y=sin(t+pi/4);
+M=[x;y];
+
+p=patch('faces',[1 2 3 4],'vertices',M',...
+'facecolor',colorin(0),'edgecolor',colorin(0))
+q=uicontrol('style','text',...
+'position',[20 0 120 20],...
+'string','0°')
+uicontrol('style','slider',...
+'position',[20 20 120 20],...
+'max',1,'min',0,...
+'callback',{@slider1,p,q})
+end
+function slider1(atr,tim,pp,qq)
+ w=get(atr,'value')*64;
+ u=colorin(w);
+ r=100*(w)/64;
+ set(pp,'facecolor',u,'edgecolor',u)
+ r1=num2str(r);
+ set(qq,'string',strcat(r1,'°'))
+end

@@ -1,0 +1,30 @@
+function c1=colorin(c)
+if 0<=c && c<=8
+    R=0;G=0;B=143+16*(c-1);
+end
+if 8<c && c<=24
+    R=0;G=16*(c-8);B=255;
+end
+if 8<c && c<=24
+    R=0;G=16*(c-8);B=255;
+    if c==24
+        G=255;
+    end
+end
+if 24<c && c<=40
+    R=16*(c-24);G=255;B=255-16*(c-24);
+    if c==40
+        R=255;B=0;
+    end
+end
+if 40<c && c<=56
+    R=255;G=255-16*(c-40);B=0;
+    if c==56
+        G=0;
+    end
+end
+if 56<c && c<=64
+    R=255-16*(c-56);G=0;B=0;
+end
+c1=[R G B];
+end

@@ -1,0 +1,6 @@
+q=figure
+hp = uipanel('Title','Main Panel','FontSize',12,...
+             'BackgroundColor','white',...
+             'Position',[.25 .1 .67 .67])
+         
+         

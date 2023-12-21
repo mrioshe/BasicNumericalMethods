@@ -1,0 +1,112 @@
+Código 1 medio paso.
+
+
+int Paso [ 8 ][ 4 ] =
+   {  {1, 0, 0, 0},
+      {1, 1, 0, 0},
+      {0, 1, 0, 0},
+      {0, 1, 1, 0},
+      {0, 0, 1, 0},
+      {0, 0, 1, 1},
+      {0, 0, 0, 1},
+      {1, 0, 0, 1}
+   };
+#define IN1  13
+#define IN2  12
+#define IN3  11
+#define IN4  10
+
+
+int steps_left=45;
+boolean Direction = true;
+int Steps = 0;                       // Define el paso actual de la secuencia
+void setup()
+   { pinMode(IN1, OUTPUT);
+     pinMode(IN2, OUTPUT);
+     pinMode(IN3, OUTPUT);
+     pinMode(IN4, OUTPUT);
+     Serial.begin(9600);
+   }
+void loop()
+   { if (steps_left>0){
+           stepper() ;     // Avanza un paso
+           steps_left-- ;  // Un paso menos
+           delay (300) ;}
+   }
+void stepper()            //Avanza un paso
+   {  digitalWrite( IN1, Paso[Steps][ 0] );
+      digitalWrite( IN2, Paso[Steps][ 1] );
+      digitalWrite( IN3, Paso[Steps][ 2] );
+      digitalWrite( IN4, Paso[Steps][ 3] );
+
+
+      SetDirection();
+   }
+void SetDirection()
+   {  
+      if(Direction)
+         Steps++;
+      else
+         Steps--;
+
+
+      Steps = ( Steps + 8 ) % 8 ;
+   }
+
+
+
+
+Paso completo
+
+
+int Paso [ 4 ][ 4 ] =
+   {  {1, 0, 0, 0},
+      //{1, 1, 0, 0},
+      {0, 1, 0, 0},
+      //{0, 1, 1, 0},
+      {0, 0, 1, 0},
+      //{0, 0, 1, 1},
+      {0, 0, 0, 1},
+      //{1, 0, 0, 1}
+   };
+#define IN1  13
+#define IN2  12
+#define IN3  11
+#define IN4  10
+
+
+int steps_left=180;
+boolean Direction = false;
+int Steps = 0;                       // Define el paso actual de la secuencia
+void setup()
+   { pinMode(IN1, OUTPUT);
+     pinMode(IN2, OUTPUT);
+     pinMode(IN3, OUTPUT);
+     pinMode(IN4, OUTPUT);
+     Serial.begin(9600);
+   }
+void loop()
+   { if (steps_left>0){
+           stepper() ;     // Avanza un paso
+           steps_left-- ;  // Un paso menos
+           delay (150) ;}
+   }
+void stepper()            //Avanza un paso
+   {  digitalWrite( IN1, Paso[Steps][ 0] );
+      digitalWrite( IN2, Paso[Steps][ 1] );
+      digitalWrite( IN3, Paso[Steps][ 2] );
+      digitalWrite( IN4, Paso[Steps][ 3] );
+
+
+      SetDirection();
+   }
+void SetDirection()
+   {  
+      if(Direction)
+         Steps++;
+      else
+         Steps--;
+
+
+      Steps = ( Steps + 4 ) % 4 ;
+   }

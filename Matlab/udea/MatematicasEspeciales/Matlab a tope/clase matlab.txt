@@ -1,0 +1,13 @@
+syms x y z f u v
+y=2*(ones(1,101));
+z=x+j*y;
+f=exp(z);
+u=real (f);
+v=imag(f);
+subplot(2,1,1)
+plot(y)
+x1=-6:12/100:6;
+u1=eval(subs(u,x,x1));
+v1=eval(subs(v,x,x1));
+subplot(2,1,2)
+plot(u1,v1)
